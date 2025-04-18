@@ -1,45 +1,105 @@
 .header {
-    padding: 10px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    height: 80px;
-    /* background-color: red; */
+  padding: 10px 40px;
+  height: 80px;
+
+  border-bottom: 2px solid #D9D9D9;
+  box-sizing: border-box;
 }
-.header__logotype {
-    position: relative;
-    display: inline-block;
-    height: 100%;
+
+.navigation-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+
+  height: 100%;
+}
+
+.navigation-block__logotype {
+  position: relative;
+  display: inline-block;
+  height: 100%;
 }
 
 .logo {
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    right: 0;
-
-    margin: auto;
-
-    height: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
 }
 .logo__text {
-    z-index: 2;
-    position: relative;
-    height: 100%;
+  z-index: 2;
+  position: relative;
+  height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    font-size: 20px;
-    font-weight: 500;
-    text-shadow: 2px 2px 0px #C1C1C1;
+  font-size: 20px;
+  font-weight: 500;
+  text-shadow: 1.5px 1.5px 0px #C1C1C1;
 
-    cursor: default;
-    user-select: none;
+  cursor: default;
+  user-select: none;
 }
 
 .navigation {
-    list-style-type: none;
+  display: flex;
+  gap: 35px;
+
+  list-style-type: none;
 }
 .navigation li {
-    float: left;
+  font-size: 16px;
+
+  float: left;
+  cursor: pointer;
+}
+
+.information-block {
+  display: flex;
+  align-items: center;
+  
+  height: 100%;
+}
+
+.searchbar {
+  position: relative;
+  display: inline-block;
+}
+.searchbar__input {
+  padding: 8px 12px;
+  box-sizing: border-box;
+  width: 320px;
+  height: 40px;
+
+  border: 2px solid #9E9696;
+  border-radius: 2px;
+}
+.searchbar__input::placeholder {
+  font-size: 14px;
+  color: #000000D9;
+}
+.searchbar__custom-border {
+  z-index: 1;
+  position: absolute;
+  margin-left: -12.78px;
+  margin-top: -12.74px;
+
+  width: 350px;
+  height: 66px;
+}
+.searchbar__custom-additional-border {
+  z-index: 2;
+  position: absolute;
+  width: 320px;
+  height: 40px;
 }
