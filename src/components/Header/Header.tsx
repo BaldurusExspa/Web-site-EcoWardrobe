@@ -1,26 +1,97 @@
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import { NavigationHeader } from "./NavigationHeader";
 import { InputForm } from "../functional-components/InputForm/InputForm";
-import "./Header.css"
+import { Button } from "../functional-components/Button/Button";
+import "./Header.css";
 
 export const Header = () => {
-  let searchbarClassName = "searchbar"
+  const searchbarClassName = "searchbar";
 
   return (
     <header className="header">
       <div className="navigation-block">
         <Logo />
-        <NavigationHeader />
+        <nav>
+          <ul className="navigation-block__categories">
+            <li>
+              <Link to="/catalog">
+                <Button className="category category-new">Новинки</Button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <Button className="category">Мужчинам</Button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <Button className="category">Женщинам</Button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <Button className="category">Детям</Button>
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div className="information-block">
-        <InputForm inputType="text" className={searchbarClassName} placeholder="поиск">
-          <img className={searchbarClassName + "__custom-border"} src="/Border-small/Frame.png" alt="" />
-          <img className={searchbarClassName + "__custom-additional-border"} src="/Border-small/Input-border-part.png" alt="" />
+        <InputForm
+          inputType="text"
+          className={searchbarClassName}
+          placeholder="поиск"
+          maxlenght={30}
+        >
+          <img
+            className={searchbarClassName + "__custom-border"}
+            src="/public/Border/Border-icon.png"
+            alt=""
+          />
+          <img
+            className={searchbarClassName + "__custom-additional-border"}
+            src="/public/Border/Border-icon-part.png"
+            alt=""
+          />
         </InputForm>
-        <div className="profile-navigation">
-          
-        </div>
+        <nav>
+          <ul className="information-block__categories">
+            <li>
+              <Link to="/catalog">
+                <Button className="category">
+                  <img
+                    className="category__image-favorites"
+                    src="/public/Favorites/Favorite-icon.png"
+                    alt="Favorite products"
+                  />
+                </Button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <Button className="category">
+                  <img
+                    className="category__image-bag"
+                    src="/public/Shopping-bag/Shopping-bag-icon.png"
+                    alt="Shopping bag"
+                  />
+                </Button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <Button className="category">
+                  <img
+                    className="category__image-profile"
+                    src="/public/Profile/Profile-icon.png"
+                    alt="Profile"
+                  />
+                </Button>
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
-  )
+  );
 };
