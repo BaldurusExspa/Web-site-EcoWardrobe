@@ -45,12 +45,12 @@ export const Header = () => {
         >
           <img
             className={searchbarClassName + "__custom-border"}
-            src="/public/Border/Border-icon.png"
+            src="Border/Border-icon.png"
             alt=""
           />
           <img
             className={searchbarClassName + "__custom-additional-border"}
-            src="/public/Border/Border-icon-part.png"
+            src="Border/Border-icon-part.png"
             alt=""
           />
         </InputForm>
@@ -61,7 +61,7 @@ export const Header = () => {
                 <Button className="category">
                   <img
                     className="category__image-favorites"
-                    src="/public/Favorites/Favorite-icon.png"
+                    src="Favorites/Favorite-icon.png"
                     alt="Favorite products"
                   />
                 </Button>
@@ -72,7 +72,7 @@ export const Header = () => {
                 <Button className="category">
                   <img
                     className="category__image-bag"
-                    src="/public/Shopping-bag/Shopping-bag-icon.png"
+                    src="Shopping-bag/Shopping-bag-icon.png"
                     alt="Shopping bag"
                   />
                 </Button>
@@ -83,7 +83,7 @@ export const Header = () => {
                 <Button className="category">
                   <img
                     className="category__image-profile"
-                    src="/public/Profile/Profile-icon.png"
+                    src="Profile/Profile-icon.png"
                     alt="Profile"
                   />
                 </Button>

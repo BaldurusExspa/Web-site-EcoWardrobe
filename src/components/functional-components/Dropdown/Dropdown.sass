@@ -1,0 +1,31 @@
+.dropdown 
+  position: relative
+  width: fit-content
+
+.dropdown__label 
+  cursor: pointer
+  padding: 10px
+  display: block
+
+.dropdown__content 
+  overflow: hidden
+  transition: height 0.3s ease
+  background-color: white
+  border: 1px solid #ccc
+
+.dropdown__content ul 
+  margin: 0
+  padding: 0
+  list-style: none
+
+.dropdown-link 
+  display: block
+  padding: 10px
+  text-decoration: none
+  color: black
+
+.dropdown-link:hover 
+  background-color: #f0f0f0
+
+.dropdown.open .dropdown-content 
+  height: auto

@@ -1,4 +1,4 @@
-import LogoHeader from "../../../public/Logo.png";
+import LogoHeader from "/Logo.png";
 
 export const Logo = () => {
  return (
