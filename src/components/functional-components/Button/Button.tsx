@@ -1,19 +1,27 @@
 import { MouseEventHandler, ReactNode } from "react";
-import "./Button.css"
+import "./Button.css";
+
+type ButtonTypes = "button" | "submit" | "reset";
 
 type TButton = {
+  type: ButtonTypes;
   children: ReactNode;
   className?: string;
   onClick?: MouseEventHandler;
 };
 
 export const Button: React.FC<TButton> = ({
-  children = "",
+  type = "button",
+  children,
   className = "",
   onClick = () => {},
 }) => {
   return (
-    <button className={"button-component " + className} onClick={onClick}>
+    <button
+      type={type}
+      className={"button-component " + className}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

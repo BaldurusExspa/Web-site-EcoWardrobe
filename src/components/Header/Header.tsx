@@ -15,22 +15,22 @@ export const Header = () => {
           <ul className="navigation-block__categories">
             <li>
               <Link to="/catalog">
-                <Button className="category category-new">Новинки</Button>
+                <Button type="button" className="category category-new">Новинки</Button>
               </Link>
             </li>
             <li>
               <Link to="/catalog">
-                <Button className="category">Мужчинам</Button>
+                <Button type="button" className="category">Мужчинам</Button>
               </Link>
             </li>
             <li>
               <Link to="/catalog">
-                <Button className="category">Женщинам</Button>
+                <Button type="button" className="category">Женщинам</Button>
               </Link>
             </li>
             <li>
               <Link to="/catalog">
-                <Button className="category">Детям</Button>
+                <Button type="button" className="category">Детям</Button>
               </Link>
             </li>
           </ul>
@@ -58,7 +58,7 @@ export const Header = () => {
           <ul className="information-block__categories">
             <li>
               <Link to="/catalog">
-                <Button className="category">
+                <Button type="button" className="category">
                   <img
                     className="category__image-favorites"
                     src="Favorites/Favorite-icon.png"
@@ -69,7 +69,7 @@ export const Header = () => {
             </li>
             <li>
               <Link to="/catalog">
-                <Button className="category">
+                <Button type="button" className="category">
                   <img
                     className="category__image-bag"
                     src="Shopping-bag/Shopping-bag-icon.png"
@@ -80,7 +80,7 @@ export const Header = () => {
             </li>
             <li>
               <Link to="/catalog">
-                <Button className="category">
+                <Button type="button" className="category">
                   <img
                     className="category__image-profile"
                     src="Profile/Profile-icon.png"

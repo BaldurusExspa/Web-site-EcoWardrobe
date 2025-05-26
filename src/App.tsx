@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Catalog } from "./components/Pages/Catalog/Catalog";
 import "./App.css";
+import { Authorization } from "./components/Pages/Authorization/Authorization";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           }
         />
         <Route path="catalog" element={<Catalog />} />
+        <Route path="auth" element={<Authorization />}/>
       </Routes>
     </BrowserRouter>
   );
