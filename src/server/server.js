@@ -1,10 +1,11 @@
-import cors from "cors";
+// import cors from "cors";
 import bcrypt, { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
 import e, { request } from "express";
 import { connection } from "./connection.js";
 import { User, AuthModel } from "./model.js";
+import cors from 'cors'
 
 const app = e();
 const port = 5700;
@@ -41,19 +42,19 @@ async function checkPassword(password, hash) {
 //   res.setHeader('Access-Control-Allow-Credentials', true);
 //   next();
 // });
-// app.use(cors({
-//   origin: 'http://localhost:5173',
-//   // credentials: true,
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(e.json());
 app.use(e.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Example at listening port: ${port}`);
 });
-
 
 // Запросы
 app.get("/users/", async (request, response) => {
