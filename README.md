@@ -1,59 +1,109 @@
-> [!NOTE]
-> Russian version
 # Веб-сайт Эко Гардероб
+## Содержание / Content
+#### Russian version:
+- #### [Описание](#DescriptionRu)
+- #### [Зависимости](#DependencysRu)
+- #### [Запуск проекта](#RunProjectRu)
 
-## При разработке использовались следующие версии dev-зависимостей:
-- Node: ```^20.14.0```,
-- React: ```^19.0.0```,
-- React-dom: ```^19.0.0```,
-- TypeScript: ```~5.7.2```,
-- Vite: ```^6.2.0```;
+#### English version
+- #### [Description](#DescriptionEng)
+- #### [Dependencys](#DependencysEng)
+- #### [Run the project](#RunProjectEng)
 
-## Прежде чем начать вам нужно выполнить установку следующих зависимостей:
-- React-router-rom: ```^7.5.1```,
-- Lorem-ipsum: ```^2.0.8```;
+<!--  -->
+
+<a name='DescriptionRu'></a>
+## Описание
+
+#### Данный проект является частью обучения в колледже и представляет из себя дипломную работу:
+- #### Проектирование и разработка интернет-магазина для онлайн-продаж одежды на примере бренда "ЭкоГардероб"
+
+<!--  -->
+
+<a name='DependencysRu'></a>
+## Зависимости
+
+#### При разработке использовались следующие версии dev-зависимостей:
+#### - Node: ```^20.14.0```,
+#### - React: ```^19.0.0```,
+#### - TypeScript: ```~5.7.2```,
+#### - Vite: ```^6.2.0```;
+
+#### Прежде чем начать вам нужно выполнить установку следующих зависимостей:
+#### - React-router-rom: ```^7.5.1```,
+#### - React-dom: ```^19.0.0```,
+#### - Prettier: ```^3.5.3```,
+#### - Axios: ```^1.9.0```,
+#### - Lorem-ipsum: ```^2.0.8```;
+
+<br>
 
 > [!WARNING]
-> При инсталяции иных версий зависимостей, Я не могу гарантировать стабильность приложения
+> При инсталяции иных версий зависимостей, не гарантируется стабильная работа приложения
 
-## Чтобы установить зависимости, выполните следующие команды:
-```
+<!--  -->
+
+<a name='RunProjectRu'></a>
+## Запуск проекта
+
+#### Чтобы установить зависимости, выполните следующие команды:
+```terminal
 npm install
 ```
 
-## Для запуска проекта, выполните следующие команды:
-```
+#### Для запуска проекта, выполните следующие команды:
+```terminal
 npm run dev
 ```
 
-#
-#
-#
+<br>
+<br>
+<br>
 
-> [!NOTE]
-> English version
 # Web-site-EcoWardrobe
 
-## The following versions of dependencies were used during development:
-- Node: ```^20.14.0```,
-- React: ```^19.0.0```,
-- React-dom: ```^19.0.0```,
-- TypeScript: ```~5.7.2```,
-- Vite: ```^6.2.0```;
+<!--  -->
 
-## To get started you will need to the following install:
-- React-router-rom: ```^7.5.1```,
-- Lorem-ipsum: ```^2.0.8```;
+<a name='DescriptionEng'></a>
+## Descrription
+
+#### This project is part of college education and is a thesis:
+#### - Design and development of an online store for online sales of clothing using the example of the EcoGarderob brand
+
+<!--  -->
+
+<a name='DependencysEng'></a>
+## Dependencys
+
+#### The following versions of dependencies were used during development:
+#### - Node: ```^20.14.0```,
+#### - React: ```^19.0.0```,
+#### - TypeScript: ```~5.7.2```,
+#### - Vite: ```^6.2.0```;
+
+#### To get started you will need to the following install:
+#### - React-router-rom: ```^7.5.1```,
+#### - React-dom: ```^19.0.0```,
+#### - Prettier: ```^3.5.3```,
+#### - Axios: ```^1.9.0```,
+#### - Lorem-ipsum: ```^2.0.8```;
+
+<br>
 
 > [!WARNING]
-> When installing other versions of these dependencies, I do not guarantee stable operation of the application
+> When installing other versions of dependencies, stable operation of the application is not guaranteed
 
-## To install dependencies, run the following command:
+<!--  -->
+
+<a name='RunProjectEng'></a>
+## Run the project
+
+#### To install dependencies, run the following command:
 ```
 npm install
 ```
 
-## To start the project, run the following command:
+#### To start the project, run the following command:
 ```
 npm run dev
 ```
