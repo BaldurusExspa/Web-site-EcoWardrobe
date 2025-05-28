@@ -1,4 +1,4 @@
-# Веб-сайт Эко Гардероб - Backend
+# Интернет-магазин для онлайн-продаж одежды Эко Гардероб - Backend
 ## Содержание / Content
 #### Russian version
 #### - [Описание](#DescriptionRu)
@@ -58,7 +58,7 @@ node ./src/server/server.js
 <br>
 <br>
 
-# Web-site-EcoWardrobe - Backend
+# Store for online sales of clothing Eco Wardrobe - Backend
 
 <!--  -->
 
