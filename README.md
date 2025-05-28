@@ -8,6 +8,7 @@
 #### English version
 #### - [Description](#DescriptionEng)
 #### - [Dependencys](#DependencysEng)
+#### - [Project structure](#ProjectStructureEng)
 #### - [Run the project](#RunProjectEng)
 
 <!--  -->
@@ -90,6 +91,21 @@ node ./src/server/server.js
 > When installing other versions of dependencies, stable operation of the application is not guaranteed
 
 <!--  -->
+
+<a name='ProjectStructureEng'></a>
+## Project structure
+
+```
+Website_EcoWardrobe/
+|
+├──src/server
+|   ├──connection.js      # Config Database connection
+|   ├──model.js           # All models (User, Auth...)
+|   └───server.js         # Express Server and Api requests
+──
+```
+
+<!-- -->
 
 <a name='RunProjectEng'></a>
 ## Run the server
