@@ -1,4 +1,4 @@
-# Веб-сайт Эко Гардероб
+# Интернет-магазин для оналайн-продаж одежды Эко Гардероб
 ## Содержание / Content
 #### Russian version:
 - #### [Описание](#DescriptionRu)
@@ -60,7 +60,7 @@ npm run dev
 <br>
 <br>
 
-# Web-site-EcoWardrobe
+# Store for online sales of clothing Eco Wardrobe
 
 <!--  -->
 
