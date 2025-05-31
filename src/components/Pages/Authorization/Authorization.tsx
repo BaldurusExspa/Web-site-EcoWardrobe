@@ -1,9 +1,12 @@
-import { InputForm } from "../../functional-components/InputForm/InputForm";
-import { Button } from "../../functional-components/Button/Button";
-import "./Authorization.css";
+// modules imports
 import { FormEvent, useState } from "react";
 import { login } from "../../../api/auth";
 import { useNavigate } from "react-router-dom";
+// components imports
+import { InputForm } from "../../functional-components/InputForm/InputForm";
+import { Button } from "../../functional-components/Button/Button";
+// styles import
+import "./Authorization.css";
 
 export const Authorization = () => {
   const navigate = useNavigate();

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Catalog } from "./components/Pages/Catalog/Catalog";
 import "./App.css";
 import { Authorization } from "./components/Pages/Authorization/Authorization";
+import { Registration } from "./components/Pages/Registration/Registration";
 
 const App = () => {
   return (
@@ -15,8 +16,9 @@ const App = () => {
             </>
           }
         />
+        <Route path="authorization" element={<Authorization />}/>
+        <Route path="registration" element={<Registration />}/>
         <Route path="catalog" element={<Catalog />} />
-        <Route path="auth" element={<Authorization />}/>
       </Routes>
     </BrowserRouter>
   );
