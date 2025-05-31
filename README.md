@@ -1,4 +1,4 @@
-# Веб-сайт Эко Гардероб
+# Интернет-магазин для оналайн-продаж одежды Эко Гардероб
 ## Содержание / Content
 #### Russian version:
 - #### [Описание](#DescriptionRu)
@@ -8,6 +8,7 @@
 #### English version
 - #### [Description](#DescriptionEng)
 - #### [Dependencys](#DependencysEng)
+- #### [Project structure](#ProjectStructureEng)
 - #### [Run the project](#RunProjectEng)
 
 <!--  -->
@@ -60,7 +61,7 @@ npm run dev
 <br>
 <br>
 
-# Web-site-EcoWardrobe
+# Store for online sales of clothing Eco Wardrobe
 
 <!--  -->
 
@@ -94,6 +95,35 @@ npm run dev
 > When installing other versions of dependencies, stable operation of the application is not guaranteed
 
 <!--  -->
+
+<a name='ProjectStructureEng'></a>
+## Project structure
+
+```
+Website_EcoWardrobe/
+|
+├──public/                              # Local media content
+|
+├──src/                                 # Main directory
+|   ├──api/                             # Api directory
+|   |   ├──auth.ts                      # Authorization requests
+|   |   ├──config.ts                    # Api configuration
+|   |   └──errorHandler.ts              # Error handler
+|   ├──assets/
+|   ├──components/                      # Components directory
+|   |   ├──Pages/                       # Pages directory
+|   |   └──functional-components/       # Functional components / Smart components directory
+|   ├──App.css                          # Compile styles for App.tsx
+|   ├──App.sass                         # Pre-process styles for App.tsx
+|   ├──App.tsx                          # Main routes file
+|   └──main.tsx                         # Root element
+|
+├──index.html                           # Base index file
+├──package-lock.json                    # All project information
+└──package.json                         # All project dependencys / dev-dependencys
+```
+
+<!-- -->
 
 <a name='RunProjectEng'></a>
 ## Run the project
