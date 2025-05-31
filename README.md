@@ -1,14 +1,15 @@
-# Веб-сайт Эко Гардероб - Backend
+# Интернет-магазин для онлайн-продаж одежды Эко Гардероб - Backend
 ## Содержание / Content
 #### Russian version
-#### - [Описание](#DescriptionRu)
-#### - [Зависимости](#DependencysRu)
-#### - [Запуск проекта](#RunProjectRu)
+- #### [Описание](#DescriptionRu)
+- #### [Зависимости](#DependencysRu)
+- #### [Запуск проекта](#RunProjectRu)
 
 #### English version
-#### - [Description](#DescriptionEng)
-#### - [Dependencys](#DependencysEng)
-#### - [Run the project](#RunProjectEng)
+- #### [Description](#DescriptionEng)
+- #### [Dependencys](#DependencysEng)
+- #### [Project structure](#ProjectStructureEng)
+- #### [Run the project](#RunProjectEng)
 
 <!--  -->
 
@@ -23,16 +24,16 @@
 ## Зависимости
 
 #### При разработке серверной части использовались следующие версии dev-зависимостей:
-#### - Node: ```20.14.0```;
+- #### Node: ```20.14.0```;
 
 #### Прежде чем начать вам нужно выполнить установку следующих зависимостей:
-#### - Bcrypt: ```^6.0.0```,
-#### - Cors: ```^2.8.5```,
-#### - Dayjs: ```^1.11.13```,
-#### - Express: ```^5.1.0```,
-#### - Jsonwebtoken: ```^9.0.2```,
-#### - Mysql2: ```^3.14.1```,
-#### - Zod: ```^3.25.28```;
+- #### Bcrypt: ```^6.0.0```,
+- #### Cors: ```^2.8.5```,
+- #### Dayjs: ```^1.11.13```,
+- #### Express: ```^5.1.0```,
+- #### Jsonwebtoken: ```^9.0.2```,
+- #### Mysql2: ```^3.14.1```,
+- #### Zod: ```^3.25.28```;
 
 <br>
 
@@ -58,7 +59,7 @@ node ./src/server/server.js
 <br>
 <br>
 
-# Web-site-EcoWardrobe - Backend
+# Store for online sales of clothing Eco Wardrobe - Backend
 
 <!--  -->
 
@@ -73,16 +74,16 @@ node ./src/server/server.js
 ## Dependencys
 
 #### The following versions of dependencies were used during development:
-#### - Node: ```20.14.0```;
+- #### Node: ```20.14.0```;
 
 #### To get started you will need to the following install:
-#### - Bcrypt: ```^6.0.0```,
-#### - Cors: ```^2.8.5```,
-#### - Dayjs: ```^1.11.13```,
-#### - Express: ```^5.1.0```,
-#### - Jsonwebtoken: ```^9.0.2```,
-#### - Mysql2: ```^3.14.1```,
-#### - Zod: ```^3.25.28```;
+- #### Bcrypt: ```^6.0.0```,
+- #### Cors: ```^2.8.5```,
+- #### Dayjs: ```^1.11.13```,
+- #### Express: ```^5.1.0```,
+- #### Jsonwebtoken: ```^9.0.2```,
+- #### Mysql2: ```^3.14.1```,
+- #### Zod: ```^3.25.28```;
 
 <br>
 
@@ -90,6 +91,21 @@ node ./src/server/server.js
 > When installing other versions of dependencies, stable operation of the application is not guaranteed
 
 <!--  -->
+
+<a name='ProjectStructureEng'></a>
+## Project structure
+
+```
+Website_EcoWardrobe/
+|
+├──src/server
+|   ├──connection.js      # Config Database connection
+|   ├──model.js           # All models (User, Auth...)
+|   └───server.js         # Express Server and Api requests
+──
+```
+
+<!-- -->
 
 <a name='RunProjectEng'></a>
 ## Run the server
