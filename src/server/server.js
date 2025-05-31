@@ -1,14 +1,15 @@
-// import cors from "cors";
 import bcrypt, { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
-import e, { request } from "express";
+import express, { request, response } from "express";
 import { connection } from "./connection.js";
-import { User, AuthModel } from "./model.js";
-import cors from 'cors'
+import { User } from "./model.js";
+import cors from "cors";
+import { success } from "zod/v4";
+import { id } from "zod/v4/locales";
 
-const app = e();
-const port = 5700;
+const app = express();
+const port = 3307;
 const SALT_ROUNDS = 12;
 const privateKey = "How to get richable";
 
@@ -35,90 +36,84 @@ async function hashPassword(password) {
 async function checkPassword(password, hash) {
   return bcrypt.compare(password, hash);
 }
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
-app.use(e.json());
-app.use(e.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Example at listening port: ${port}`);
 });
 
-// Запросы
-app.get("/users/", async (request, response) => {
+app.post("/authorization", async (request, response) => {
   try {
-    const [results] = await connection.query("SELECT * FROM user");
-    response.send(results);
+    const { email, password } = request.body;
+
+    const [user] = await connection.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
+
+    const userData = user[0];
+
+    if (!user) {
+      return response.status(401).json({
+        success: false,
+        message: "Такой почты не зарегитсрированно",
+      });
+    }
+
+    const isMatchPass = await checkPassword(password, userData.password);
+
+    if (!isMatchPass) {
+      return response.status(401).json({
+        success: false,
+        message: "Неверный пароль",
+      });
+    }
+
+    const createToken = jwt.sign({ sub: user.id }, privateKey, {
+      expiresIn: "1h",
+    });
+
+    response.status(200).json({
+      success: true,
+      createToken: createToken,
+      user: {
+        id: user.id,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    console.log(err);
+    console.error(err.message);
+    response.status(500).json({
+      success: false,
+      message: "Ошибка сервера",
+    });
   }
 });
 
-app.get("/users/me/", async (request, response) => {
-  try {
-    const user = await chechAuth(request);
-    response.send(user);
-  } catch (err) {
-    response.status(400).json({ error: err.message });
-  }
-});
-
-app.post("/users/", async (request, response) => {
+app.post("/registration", async (request, response) => {
   try {
     const { name, mobilePhone, email, password } = User.parse(request.body);
     const hash = await hashPassword(password);
     const createUser = await connection.execute(
-      `INSERT INTO user (name, mobilePhone, email, password) VALUES (?, ?, ?, ?)`,
+      `INSERT INTO users (name, mobilePhone, email, password) VALUES (?, ?, ?, ?)`,
       [name, mobilePhone, email, hash] // [request.body.name, request.body.mobilePhone, request.body.email, request.body.password]
     );
     await connection.commit();
 
-    response.send(request.body);
+    response.status(200).json({
+      success: true,
+    });
   } catch (err) {
-    response.send(err.message);
-    console.log(err.message);
-  }
-});
-
-app.post("/users/token/", async (request, response) => {
-  try {
-    const data = AuthModel.parse(request.body);
-    const [results] = await connection.query(
-      `SELECT * FROM user WHERE email = ?`,
-      [data.email]
-    );
-    if (results.length > 0) {
-      const user = results[0];
-      if (await checkPassword(data.password, user.password)) {
-        // Успешная авторизация
-        const token = jwt.sign(
-          {
-            /*Тот кто подписывает токен ->*/ sub: user.id,
-            /*Время истекания токена*/ exp: dayjs().add(7, "day").unix(),
-          },
-          privateKey
-        );
-        response.send({ token, user: request.body });
-        console.log("Авторизация успешна");
-      } else {
-        throw new Error("Логин и пароль не верные");
-      }
-    } else {
-      throw new Error("Пользователь не найден");
-    }
-  } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
   }
 });
