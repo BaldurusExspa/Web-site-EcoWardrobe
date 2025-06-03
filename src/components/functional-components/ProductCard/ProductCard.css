@@ -1,0 +1,38 @@
+.product-card {
+  width: 350px;
+  height: 430px;
+  cursor: pointer;
+}
+
+.product-card__image {
+  width: 350px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
+.product-card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.product-card__info .info__name {
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+}
+.product-card__info .info__compound {
+  font-size: 12px;
+  font-weight: 300;
+}
+.product-card__info .info__price {
+  font-size: 16px;
+  font-weight: normal;
+}

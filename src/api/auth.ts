@@ -4,6 +4,7 @@ export const login = async (email: string, password: string) => {
   try {
     const response = await api.post("/authorization", { email, password });
     localStorage.setItem("token", response.data.token);
+    console.log(response.data.token);
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
@@ -11,9 +12,19 @@ export const login = async (email: string, password: string) => {
   }
 };
 
-export const register = async (name: string, mobilePhone: string, email: string, password: string) => {
+export const register = async (
+  name: string,
+  mobilePhone: string,
+  email: string,
+  password: string
+) => {
   try {
-    const response = await api.post("/registration", { name, mobilePhone, email, password });
+    const response = await api.post("/registration", {
+      name,
+      mobilePhone,
+      email,
+      password,
+    });
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {

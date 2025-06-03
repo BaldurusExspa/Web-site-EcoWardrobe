@@ -2,7 +2,8 @@ import { ReactNode } from "react";
 
 type TInputForm = {
   inputType: string;
-  className?: string;
+  className_input?: string;
+  className_label?: string;
   children?: ReactNode;
   labelText?: string;
   placeholder?: string;
@@ -14,7 +15,8 @@ type TInputForm = {
 export const InputForm: React.FC<TInputForm> = ({
   onChange = () => {},
   inputType = "text",
-  className = "",
+  className_input = "",
+  className_label = "",
   children,
   labelText = "",
   placeholder = "",
@@ -22,14 +24,14 @@ export const InputForm: React.FC<TInputForm> = ({
   value = "",
 }) => {
   return (
-    <div className={"input-form " + className}>
+    <div className={"input-form"}>
       {children}
-      <label htmlFor={className + "__input"} className={className + "__label"}>
+      <label htmlFor={className_input} className={className_label}>
         {labelText}
       </label>
       <input
         type={inputType}
-        className={className + "__input"}
+        className={className_input}
         placeholder={placeholder}
         maxLength={maxlenght}
         value={value}

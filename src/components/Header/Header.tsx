@@ -39,7 +39,7 @@ export const Header = () => {
       <div className="information-block">
         <InputForm
           inputType="text"
-          className={searchbarClassName}
+          className_input={searchbarClassName + "__input"}
           placeholder="поиск"
           maxlenght={30}
         >
