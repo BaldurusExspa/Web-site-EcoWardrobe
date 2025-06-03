@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
 import express, { request, response } from "express";
 import { connection } from "./connection.js";
-import { User } from "./model.js";
+import { User, AuthModel } from "./model.js";
 import cors from "cors";
 import { success } from "zod/v4";
 import { id } from "zod/v4/locales";
@@ -110,10 +110,59 @@ app.post("/registration", async (request, response) => {
     );
     await connection.commit();
 
+    const [user] = await connection.query(
+      "SELECT * FROM users WHERE users.id = ?",
+      [createUser.insertId]
+    );
+    const token = jwt.sign(
+      {
+        sub: createUser.insertId,
+        email: email,
+        exp: dayjs().add(7, "day").unix(),
+      },
+      privateKey
+    );
+
     response.status(200).json({
       success: true,
-    });
+      token: token,
+      message: `Пользователь создан с данным токеном: ${token}`
+    })
   } catch (err) {
     console.error(err.message);
   }
 });
+
+// app.post("/registration", async (request, response) => {
+//   try {
+//     const data = AuthModel.parse(request.body);
+//     const [results] = await connection.query(
+//       `SELECT * FROM users WHERE email = ?`,
+//       [data.email]
+//     );
+//     if (results.length > 0) {
+//       const user = results[0];
+//       if (await checkPassword(data.password, user.password)) {
+//         const token = jwt.sign(
+//           {
+//             /*Тот кто подписывает токен ->*/ sub: user.id,
+//             /*Время истекания токена ->*/ exp: dayjs().add(7, "day").unix(),
+//           },
+//           privateKey
+//         );
+//         response.status(200).json({
+//           succses: true,
+//           token: token,
+//           user: request.body,
+//         });
+//         console.log("Авторизация успешна");
+//       } else {
+//         throw new Error("Логин и пароль не верные");
+//       }
+//     } else {
+//       throw new Error("Пользователь не найден");
+//     }
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// });
