@@ -5,6 +5,8 @@ import { Catalog } from "./components/Pages/Catalog/Catalog";
 import { Authorization } from "./components/Pages/Authorization/Authorization";
 import { Registration } from "./components/Pages/Registration/Registration";
 import { Basket } from "./components/Pages/Basket/Basket";
+import { Profile } from "./components/Pages/Profile/Profile";
+import { Product } from "./components/Pages/Product/Product";
 // Styles
 import "./App.css";
 
@@ -12,18 +14,17 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="*"
-          element={
-            <>
-              <h1>Тут пока ничего нет!</h1>
-            </>
-          }
-        />
-        <Route path="authorization" element={<Authorization />}/>
-        <Route path="registration" element={<Registration />}/>
+        {/* !!! Все роуты !!! */}
+        <Route path="*" element={<Catalog />} />
+
+        {/* !!! Адресные роуты !!! */}
+        <Route path="authorization" element={<Authorization />} />
+        <Route path="registration" element={<Registration />} />
         <Route path="catalog" element={<Catalog />} />
-        <Route path="basket" element={< Basket/>} />
+        <Route path="basket" element={<Basket />} />
+        <Route path="profile" element={<Profile />} />
+
+        <Route path="product" element={<Product />}/>
       </Routes>
     </BrowserRouter>
   );

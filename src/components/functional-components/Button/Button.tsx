@@ -4,7 +4,7 @@ import "./Button.css";
 type ButtonTypes = "button" | "submit" | "reset";
 
 type TButton = {
-  type: ButtonTypes;
+  type?: ButtonTypes;
   children: ReactNode;
   className?: string;
   onClick?: MouseEventHandler;

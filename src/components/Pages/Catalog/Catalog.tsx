@@ -1,11 +1,11 @@
 // Modules
 // Components
-import { Header } from "../../Header/Header";
+import { Header } from "../../.Header/Header";
 import { renderComponentsWithCommonProps } from "../../functional-components/renderComponent/renderComponent";
 import { ProductCard } from "../../functional-components/ProductCard/ProductCard";
 import { AutoBreadcrumbs } from "../../functional-components/Breadcrumbs/AutoBreadcrumbs";
 import { Dropdown } from "../../functional-components/Dropdown/Dropdown";
-import { Footer } from "../../Footer/Footer";
+import { Footer } from "../../.Footer/Footer";
 // Styles
 import "./Catalog.css";
 
@@ -26,7 +26,7 @@ export const Catalog = () => {
       productName: "Кофточка",
       productCompound: "Смартфоны",
       productPrice: 9999,
-      onClick: ''
+      onClick: "/product",
     },
     {
       id: "2",
@@ -34,6 +34,7 @@ export const Catalog = () => {
       productName: "Свитшот",
       productCompound: "Ноутбуки",
       productPrice: 7894,
+      onClick: "/product",
     },
     {
       id: "3",
@@ -41,6 +42,7 @@ export const Catalog = () => {
       productName: "Худи",
       productCompound: "Аксессуары",
       productPrice: 5734,
+      onClick: "/product",
     },
     {
       id: "4",
@@ -48,14 +50,15 @@ export const Catalog = () => {
       productName: "Худи",
       productCompound: "Аксессуары",
       productPrice: 5734,
+      onClick: "/product",
     },
   ];
 
   return (
     <>
       <Header />
-      <section className="catalog-section">
-        <div className="content">
+      <section className="section">
+        <div className="content catalog-content">
           {/* <AutoBreadcrumbs /> */}
           <div className="content__header">
             <p className="header__category-name">Название категории товаров</p>
