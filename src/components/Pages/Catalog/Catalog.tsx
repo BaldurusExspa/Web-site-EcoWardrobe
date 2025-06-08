@@ -1,11 +1,11 @@
 // Modules
 // Components
-import { Header } from "../../.Header/Header";
+import { Header } from "../../Header/Header";
 import { renderComponentsWithCommonProps } from "../../functional-components/renderComponent/renderComponent";
 import { ProductCard } from "../../functional-components/ProductCard/ProductCard";
 import { AutoBreadcrumbs } from "../../functional-components/Breadcrumbs/AutoBreadcrumbs";
 import { Dropdown } from "../../functional-components/Dropdown/Dropdown";
-import { Footer } from "../../.Footer/Footer";
+import { Footer } from "../../Footer/Footer";
 // Styles
 import "./Catalog.css";
 

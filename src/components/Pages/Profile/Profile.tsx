@@ -1,7 +1,7 @@
 // Modules
 // Components
-import { Header } from "../../.Header/Header";
-import { Footer } from "../../.Footer/Footer";
+import { Header } from "../../Header/Header";
+import { Footer } from "../../Footer/Footer";
 import { renderComponentsWithCommonProps } from "../../functional-components/renderComponent/renderComponent";
 import { AutoBreadcrumbs } from "../../functional-components/Breadcrumbs/AutoBreadcrumbs";
 import { OrderCard } from "../../functional-components/OrderCard/OrderCard";

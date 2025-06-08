@@ -8,13 +8,15 @@
 .content__image-container
   display: flex
   flex-direction: row
+  justify-content: flex-end
   width: 100%
   .image-container__addition-images
     width: 75px
   .image-container__main-image
-    width: 100%
     max-height: 722px
     height: 100%
+    border-radius: 10px
+    object-fit: contain
 
 .content__information-container
   display: flex
@@ -26,3 +28,112 @@
   .information-container__header
     font-size: 40px
     font-weight: bold
+
+  .information-container__compound
+    // Not needet padding
+    padding-top: 10px
+    color: #939191
+    font-size: 16px
+    font-weight: 300
+
+  .information-container__price
+    // Not needet padding
+    padding-top: 20px
+    font-size: 20px
+    font-weight: normal
+
+  .information-container__dimensions
+    // Not needet padding
+    padding-top: 40px
+    display: flex
+    gap: 10px
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    width: 100%
+    height: auto
+
+  .information-container__dimensions-header
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 100%
+
+  .information-container__dimensions-naming
+    font-size: 16px    
+    font-weight: normal
+    letter-spacing: 1px
+
+  .dimensions-list
+    display: flex
+    gap: 8px
+    align-items: center
+
+  .dimensions-list__image
+    max-height: 10px
+    height: 100%
+
+  .dimensions-list__table
+    color: #000000
+    font-size: 16px
+    font-weight: 300
+    letter-spacing: 1px
+    text-decoration-thickness: 1px
+
+  .information-container__dimensions-container
+    display: flex
+    flex-wrap: wrap
+    row-gap: 10px
+    column-gap: 10px
+    width: 100%
+
+  .dimensions-container__button
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100px
+    height: 50px
+    border: 2px solid #D9D9D9
+    border-radius: 10px
+
+  .information-container__buttons
+    margin-top: 70px
+    display: flex
+    flex-direction: column
+    gap: 15px
+    width: 100%
+
+  .buttons__btn-add
+    padding: 20px 0
+    width: 100%
+    height: auto
+    color: #FFFFFF
+    font-size: 20px
+    font-weight: normal
+    background-color: #6F9039
+    border-radius: 12px
+
+  .buttons__btn-favorite
+    padding: 20px 0
+    width: 100%
+    height: auto
+    color: #000000
+    font-size: 20px
+    font-weight: normal
+    border: 2px solid #D9D9D9
+    border-radius: 12px
+
+  .information-container__description-container
+    margin-top: 50px
+    display: flex
+    gap: 15px
+    flex-direction: column
+
+  .description-container__header
+    font-size: 18px
+    font-weight: normal
+
+  .description-container__text
+    font-size: 16px
+    font-weight: normal
