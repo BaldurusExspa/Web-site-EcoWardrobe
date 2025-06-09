@@ -1,5 +1,5 @@
 // modules imports
-import { api } from "../../../api/config";
+// import { api } from "../../../api/config";
 import { FormEvent, useState } from "react";
 import { login } from "../../../api/auth";
 import { useNavigate, Link } from "react-router-dom";
@@ -14,32 +14,12 @@ export const Authorization = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // async function getTokenAfterRegistration() {
-  //   try {
-  //     const response = await api.post("/authorization");
-
-  //     if (response.data.success) {
-  //       localStorage.setItem("token", response.data.token);
-  //       return response.data.token;
-  //     }
-  //   } catch (error) {
-  //     console.error("Ошибка:", error);
-  //     throw error;
-  //   }
-  // }
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const user = await login(email, password);
-      // getTokenAfterRegistration()
-      //   .then((token) => {
-      //     console.log("Полученный токен:", token);
-      //   })
-      //   .catch((error) => {
-      //     console.error("Произошла ошибка:", error);
-      //   });
+
       navigate("/catalog");
     } catch (error) {
       console.error("Ошибка входа:", error);

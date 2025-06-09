@@ -1,5 +1,5 @@
 // modules imports
-import { api } from "../../../api/config";
+// import { api } from "../../../api/config";
 import { FormEvent, useState } from "react";
 import { register } from "../../../api/auth";
 import { useNavigate, Link } from "react-router-dom";
@@ -15,20 +15,6 @@ export const Registration = () => {
   const [mobilePhone, setMobilePhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // async function getTokenAfterRegistration() {
-  //   try {
-  //     const response = await api.post("/registration");
-
-  //     if (response.data.success) {
-  //       localStorage.setItem("token", response.data.token);
-  //       return response.data.token;
-  //     }
-  //   } catch (error) {
-  //     console.error("Ошибка:", error);
-  //     throw error;
-  //   }
-  // }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

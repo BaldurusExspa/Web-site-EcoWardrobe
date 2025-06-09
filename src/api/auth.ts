@@ -25,6 +25,8 @@ export const register = async (
       email,
       password,
     });
+    localStorage.setItem("token", response.data.token);
+    
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {

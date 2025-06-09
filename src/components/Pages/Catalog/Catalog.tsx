@@ -1,58 +1,24 @@
 // Modules
+import { useState, useEffect } from "react";
+import { api } from "../../../api/config";
 // Components
 import { Header } from "../../Header/Header";
 import { renderComponentsWithCommonProps } from "../../functional-components/renderComponent/renderComponent";
 import { ProductCard } from "../../functional-components/ProductCard/ProductCard";
-import { AutoBreadcrumbs } from "../../functional-components/Breadcrumbs/AutoBreadcrumbs";
+// import { AutoBreadcrumbs } from "../../functional-components/Breadcrumbs/AutoBreadcrumbs";
 import { Dropdown } from "../../functional-components/Dropdown/Dropdown";
 import { Footer } from "../../Footer/Footer";
 // Styles
 import "./Catalog.css";
 
 export const Catalog = () => {
-  interface Product {
-    id: string;
-    productImage: string;
-    productName: string;
-    productCompound: string;
-    productPrice: number;
-    onClick?: string;
-  }
+  const [data, setData] = useState([]);
 
-  const products: Product[] = [
-    {
-      id: "1",
-      productImage: "/CardsImages/Brown-jumper-1.JPG",
-      productName: "Кофточка",
-      productCompound: "Смартфоны",
-      productPrice: 9999,
-      onClick: "/product",
-    },
-    {
-      id: "2",
-      productImage: "/CardsImages/Brown-jumper-5.JPG",
-      productName: "Свитшот",
-      productCompound: "Ноутбуки",
-      productPrice: 7894,
-      onClick: "/product",
-    },
-    {
-      id: "3",
-      productImage: "/CardsImages/Brown-jumper-3.JPG",
-      productName: "Худи",
-      productCompound: "Аксессуары",
-      productPrice: 5734,
-      onClick: "/product",
-    },
-    {
-      id: "4",
-      productImage: "/CardsImages/Brown-jumper-1.JPG",
-      productName: "Худи",
-      productCompound: "Аксессуары",
-      productPrice: 5734,
-      onClick: "/product",
-    },
-  ];
+  useEffect(() => {
+    api.get("/catalog").then((response) => {
+      setData(response.data);
+    });
+  }, []);
 
   return (
     <>
@@ -87,7 +53,7 @@ export const Catalog = () => {
             </div>
             <div className="main__catalog">
               {renderComponentsWithCommonProps({
-                items: products,
+                items: data,
                 Component: ProductCard,
                 // commonProps: {
                 //   productImage: products[0].productImage,
