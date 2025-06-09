@@ -5,13 +5,18 @@ import express, { request, response } from "express";
 import { connection } from "./connection.js";
 import { User, AuthModel } from "./model.js";
 import cors from "cors";
-import { success } from "zod/v4";
+import { json, success } from "zod/v4";
 import { id } from "zod/v4/locales";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3307;
 const SALT_ROUNDS = 12;
 const privateKey = "How to get richable";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const imagesPath = path.join(__dirname, 'public', 'images');
 
 async function chechAuth(request) {
   const params = request.headers["authorization"];
@@ -37,6 +42,7 @@ async function checkPassword(password, hash) {
   return bcrypt.compare(password, hash);
 }
 
+app.use('/images', express.static(imagesPath));
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -50,6 +56,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Example at listening port: ${port}`);
+});
+
+app.get("/catalog", async (request, response) => {
+  try {
+    const [products] = await connection.query(
+      "SELECT products.id, products.image, products.name, products.compound, price_change.current_price FROM products JOIN (SELECT products_id, current_price, date_interaction FROM price_change WHERE (products_id, date_interaction) IN (SELECT products_id, MAX(date_interaction) FROM price_change GROUP BY products_id)) price_change ON products.id = price_change.products_id ORDER BY products.id;"
+    );
+
+    response.status(200).json(products);
+  } catch (err) {
+    console.log(err.message);
+    response.status(500).json({
+      success: false,
+      message: "Ошибка запроса",
+    });
+  }
 });
 
 app.post("/authorization", async (request, response) => {
@@ -126,8 +148,8 @@ app.post("/registration", async (request, response) => {
     response.status(200).json({
       success: true,
       token: token,
-      message: `Пользователь создан с данным токеном: ${token}`
-    })
+      message: `Пользователь создан с данным токеном: ${token}`,
+    });
   } catch (err) {
     console.error(err.message);
   }
