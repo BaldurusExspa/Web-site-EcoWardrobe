@@ -19,7 +19,7 @@ export const InputForm: React.FC<TInputForm> = ({
   children,
   placeholder = "",
   maxlenght = 100,
-  value = "",
+  value,
 }) => {
   return (
     <div className={"input-form"}>

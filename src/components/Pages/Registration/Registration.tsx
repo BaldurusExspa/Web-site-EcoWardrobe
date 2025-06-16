@@ -1,12 +1,12 @@
-// modules imports
-// import { api } from "../../../api/config";
+// Modules
 import { FormEvent, useState } from "react";
-import { register } from "../../../api/auth";
 import { useNavigate, Link } from "react-router-dom";
-// components imports
+// Components
+import { register } from "../../../api/auth";
+import { useAuth } from "../../../api/authContext";
 import { InputForm } from "../../functional-components/InputForm/InputForm";
 import { Button } from "../../functional-components/Button/Button";
-// styles import
+// Styles
 import "./Registration.css";
 
 export const Registration = () => {
@@ -15,13 +15,13 @@ export const Registration = () => {
   const [mobilePhone, setMobilePhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  // const { register } = useAuth();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const user = await register(name, mobilePhone, email, password);
-      // getTokenAfterRegistration();
+      const response = await register(name, mobilePhone, email, password);
       navigate("/catalog");
     } catch (error) {
       console.error("Ошибка входа:", error);

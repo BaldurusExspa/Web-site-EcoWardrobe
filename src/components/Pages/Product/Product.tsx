@@ -1,5 +1,7 @@
 // Modules
-import { Link } from "react-router-dom";
+import { api } from "../../../api/config";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 // Components
 import { formatPrice } from "../../.formatPrice/formatPrice";
 import { Header } from "../../Header/Header";
@@ -7,14 +9,28 @@ import { Footer } from "../../Footer/Footer";
 import { Button } from "../../functional-components/Button/Button";
 // Styles
 import "./Product.css";
+import Table from '../../../assets/Dimensions-table/Ruler.png'
 
 export const Product = () => {
-  const productImage = "/CardsImages/Brown-jumper-1.JPG";
-  const productName = "Название товара";
-  const productCompound = "90% конопля, 10% органический хлопок";
-  const productPrice = 5244;
-  const productDescription =
-    "Данный товар был произведен в Китае из лучших материалов и тд. Данный товар был произведен в Китае из лучших материалов и тд. Данный товар был произведен в Китае из лучших материалов и тд. Данный товар был произведен в Китае из лучших материалов и тд. Данный товар был произведен в Китае из лучших материалов и тд. Данный товар был произведен в Китае из лучших материалов и тд. ";
+  const [data, setData] = useState<any>();
+
+  const { productId } = useParams();
+
+  useEffect(() => {
+    api.get(`/products/${productId}`).then((response) => {
+      setData(response.data[0]);
+    });
+  }, [productId]);
+
+  if (!data) {
+    return null;
+  }
+
+  const productImage = `http://localhost:3307/images/${data.image}`;
+  const productName = data.name;
+  const productCompound = data.compound;
+  const productPrice = data.current_price;
+  const productDescription = data.description;
 
   // Объект размеров одежды на TypeScript
   interface ProductDimensions {
@@ -67,7 +83,8 @@ export const Product = () => {
                 <span className="dimensions-list">
                   <img
                     className="dimensions-list__image"
-                    src="./Dimensions-table/Ruler.png"
+                    // src="./Dimensions-table/Ruler.png"
+                    src={Table}
                     alt=""
                   />
                   <Link

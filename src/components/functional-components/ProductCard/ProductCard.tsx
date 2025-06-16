@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom"
+// Modules
+import { useNavigate, useParams } from "react-router-dom";
 // styles
-import "./ProductCard.css"
+import "./ProductCard.css";
 
 type TCard = {
   id: string;
@@ -8,32 +9,33 @@ type TCard = {
   name: string;
   compound: string;
   current_price: number;
-  onClick?: string
-}
+  onClick?: (_: any) => void;
+};
 
 export const ProductCard: React.FC<TCard> = ({
-  onClick = '/catalog',
+  onClick,
   id,
   image,
-  name = 'Тестовое имя товара',
-  compound = 'Тестовый состав товара',
-  current_price = '9999',
+  name = "Тестовое имя товара",
+  compound = "Тестовый состав товара",
+  current_price = "9999",
 }) => {
-
-  const navigate = useNavigate();
-
   const handleClick = () => {
-    navigate(`${onClick}`)
-  }
+    onClick?.({id});
+  };
 
   return (
-   <div className="product-card" id={id} onClick={handleClick}>
-    <img className="product-card__image" src={`http://localhost:3307/images/${image}`} alt="Clothes image" />
-    <div className="product-card__info">
-      <p className="info__name">{name}</p>
-      <p className="info__compound">Состав товара: {compound}</p>
-      <p className="info__price">{current_price} ₽</p>
+    <div className="product-card" id={id} onClick={handleClick}>
+      <img
+        className="product-card__image"
+        src={`http://localhost:3307/images/${image}`}
+        alt="Clothes image"
+      />
+      <div className="product-card__info">
+        <p className="info__name">{name}</p>
+        <p className="info__compound">Состав товара: {compound}</p>
+        <p className="info__price">{current_price} ₽</p>
+      </div>
     </div>
-   </div> 
-  )
-}
+  );
+};

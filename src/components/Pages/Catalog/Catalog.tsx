@@ -10,10 +10,15 @@ import { Dropdown } from "../../functional-components/Dropdown/Dropdown";
 import { Footer } from "../../Footer/Footer";
 // Styles
 import "./Catalog.css";
+import { useNavigate } from "react-router-dom";
 
 export const Catalog = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
+  const handleProductClick = (product: any) => {
+    navigate(`/products/${product.id}`)
+  } 
   useEffect(() => {
     api.get("/catalog").then((response) => {
       setData(response.data);
@@ -28,7 +33,10 @@ export const Catalog = () => {
           {/* <AutoBreadcrumbs /> */}
           <div className="content__header">
             <p className="header__category-name">Название категории товаров</p>
-            <p id="cardsCounter" className="header__counter">{`[10]`}</p>
+            <p
+              id="cardsCounter"
+              className="header__counter"
+            >{`[${data.length}]`}</p>
           </div>
           <div className="main">
             <div className="main__filter">
@@ -52,7 +60,10 @@ export const Catalog = () => {
               </Dropdown>
             </div>
             <div className="main__catalog">
-              {renderComponentsWithCommonProps({
+              {data.map((product: any) => (
+                <ProductCard {...product} onClick={handleProductClick} />
+              ))}
+              {/* {renderComponentsWithCommonProps({
                 items: data,
                 Component: ProductCard,
                 // commonProps: {
@@ -62,7 +73,7 @@ export const Catalog = () => {
                 //   productPrice: products[0].productPrice,
                 //   onClick: "/catalog",
                 // },
-              })}
+              })} */}
             </div>
           </div>
         </div>
