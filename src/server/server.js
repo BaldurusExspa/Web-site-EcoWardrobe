@@ -9,6 +9,7 @@ import { json, success } from "zod/v4";
 import { id } from "zod/v4/locales";
 import path from "path";
 import { fileURLToPath } from "url";
+import { authMiddleware } from "./authMiddleware.js";
 
 const app = express();
 const port = 3307;
@@ -16,7 +17,7 @@ const SALT_ROUNDS = 12;
 const privateKey = "How to get richable";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const imagesPath = path.join(__dirname, 'public', 'images');
+const imagesPath = path.join(__dirname, "public", "images");
 
 async function chechAuth(request) {
   const params = request.headers["authorization"];
@@ -42,7 +43,7 @@ async function checkPassword(password, hash) {
   return bcrypt.compare(password, hash);
 }
 
-app.use('/images', express.static(imagesPath));
+app.use("/images", express.static(imagesPath));
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -58,6 +59,36 @@ app.listen(port, () => {
   console.log(`Example at listening port: ${port}`);
 });
 
+// app.get("/me", authMiddleware, async (request, response) => {
+//   try {
+//     response.json({
+//       success: true,
+//       user: request.user,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     response.status(500).json({
+//       success: false,
+//       message: "Ошибка сервера",
+//     });
+//   }
+// });
+
+app.get("/products/:id", async (request, response) => {
+  try {
+    const productId = request.params.id;
+
+    const [product] = await connection.query(
+      "SELECT products.*, price_change.current_price FROM products JOIN (SELECT products_id, current_price, date_interaction FROM price_change WHERE (products_id, date_interaction) IN (SELECT products_id, MAX(date_interaction) FROM price_change GROUP BY products_id)) price_change ON products.id = price_change.products_id WHERE products.id = ? ORDER BY products.id",
+      [productId]
+    );
+
+    response.status(200).json(product);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.get("/catalog", async (request, response) => {
   try {
     const [products] = await connection.query(
@@ -66,7 +97,7 @@ app.get("/catalog", async (request, response) => {
 
     response.status(200).json(products);
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
     response.status(500).json({
       success: false,
       message: "Ошибка запроса",
@@ -154,37 +185,3 @@ app.post("/registration", async (request, response) => {
     console.error(err.message);
   }
 });
-
-// app.post("/registration", async (request, response) => {
-//   try {
-//     const data = AuthModel.parse(request.body);
-//     const [results] = await connection.query(
-//       `SELECT * FROM users WHERE email = ?`,
-//       [data.email]
-//     );
-//     if (results.length > 0) {
-//       const user = results[0];
-//       if (await checkPassword(data.password, user.password)) {
-//         const token = jwt.sign(
-//           {
-//             /*Тот кто подписывает токен ->*/ sub: user.id,
-//             /*Время истекания токена ->*/ exp: dayjs().add(7, "day").unix(),
-//           },
-//           privateKey
-//         );
-//         response.status(200).json({
-//           succses: true,
-//           token: token,
-//           user: request.body,
-//         });
-//         console.log("Авторизация успешна");
-//       } else {
-//         throw new Error("Логин и пароль не верные");
-//       }
-//     } else {
-//       throw new Error("Пользователь не найден");
-//     }
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// });
