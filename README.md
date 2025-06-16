@@ -31,7 +31,7 @@
 #### - Vite: ```^6.2.0```;
 
 #### Прежде чем начать вам нужно выполнить установку следующих зависимостей:
-#### - React-router-rom: ```^7.5.1```,
+#### - React-router-dom: ```^7.5.1```,
 #### - React-dom: ```^19.0.0```,
 #### - Prettier: ```^3.5.3```,
 #### - Axios: ```^1.9.0```,
@@ -83,7 +83,7 @@ npm run dev
 #### - Vite: ```^6.2.0```;
 
 #### To get started you will need to the following install:
-#### - React-router-rom: ```^7.5.1```,
+#### - React-router-dom: ```^7.5.1```,
 #### - React-dom: ```^19.0.0```,
 #### - Prettier: ```^3.5.3```,
 #### - Axios: ```^1.9.0```,
